@@ -80,6 +80,7 @@ class _EmailScreenState extends State<EmailScreen> {
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   onEditingComplete: _onSubmit,
+                  autocorrect: false,
                   decoration: InputDecoration(
                     hintText: "Email",
                     errorText: _isEmailValid(),
