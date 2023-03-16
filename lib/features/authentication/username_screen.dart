@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
+import 'package:ticktok_clone/features/authentication/email_screen.dart';
 import 'package:ticktok_clone/features/authentication/widgets/form_button.dart';
 
 class UsernameScreen extends StatefulWidget {
@@ -14,6 +15,13 @@ class _UsernameScreenState extends State<UsernameScreen> {
   final TextEditingController _usernameController = TextEditingController();
 
   String _username = "";
+
+  // Inside the StateFul Widget, we don't have to pass context to method.
+  // It can be accessed anywhere.
+  void _onNextTap() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const EmailScreen()));
+  }
 
   @override
   void initState() {
@@ -69,8 +77,11 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 cursorColor: Theme.of(context).primaryColor,
               ),
               Gaps.v28,
-              FormButton(
-                disabled: _username.isEmpty,
+              GestureDetector(
+                onTap: _onNextTap,
+                child: FormButton(
+                  disabled: _username.isEmpty,
+                ),
               )
             ],
           )),
