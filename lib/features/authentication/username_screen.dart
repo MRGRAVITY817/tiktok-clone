@@ -17,6 +17,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
 
   @override
   void initState() {
+    // `super.initState()` should be at very start....
     super.initState();
 
     _usernameController.addListener(() {
@@ -24,6 +25,15 @@ class _UsernameScreenState extends State<UsernameScreen> {
         _username = _usernameController.text;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    // If we don't dispose controller, there will be a memory leak.
+    _usernameController.dispose();
+
+    // `super.dispose()` should be at very end.
+    super.dispose();
   }
 
   @override
