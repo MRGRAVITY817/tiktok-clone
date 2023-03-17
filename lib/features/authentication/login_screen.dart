@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
+import 'package:ticktok_clone/features/authentication/login_form_screen.dart';
 import 'package:ticktok_clone/features/authentication/widgets/auth_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -13,53 +14,86 @@ class LoginScreen extends StatelessWidget {
     Navigator.of(context).pop();
   }
 
+  void _onEmailLoginTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginFormScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Sizes.size40),
+              padding: const EdgeInsets.symmetric(
+                horizontal: Sizes.size40,
+              ),
               child: Column(
-                children: const [
+                children: [
                   Gaps.v80,
-                  Text("Log in to TikTok",
-                      style: TextStyle(
-                          fontSize: Sizes.size24, fontWeight: FontWeight.w700)),
+                  const Text(
+                    "Log in to TikTok",
+                    style: TextStyle(
+                      fontSize: Sizes.size24,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                   Gaps.v20,
-                  Text(
+                  const Text(
                     "Manage your account, check notifications, comment on videos, and more.",
                     style: TextStyle(
-                        fontSize: Sizes.size16, color: Colors.black45),
+                      fontSize: Sizes.size16,
+                      color: Colors.black45,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   Gaps.v40,
                   AuthButton(
-                      text: "Use email & password",
-                      icon: FaIcon(FontAwesomeIcons.user)),
+                    onTap: () => _onEmailLoginTap(context),
+                    text: "Use email & password",
+                    icon: const FaIcon(
+                      FontAwesomeIcons.user,
+                    ),
+                  ),
                   Gaps.v16,
-                  AuthButton(
-                      text: "Continue with Apple",
-                      icon: FaIcon(FontAwesomeIcons.apple)),
+                  const AuthButton(
+                    text: "Continue with Apple",
+                    icon: FaIcon(
+                      FontAwesomeIcons.apple,
+                    ),
+                  ),
                 ],
               ))),
       bottomNavigationBar: BottomAppBar(
           color: Colors.grey.shade50,
           elevation: 2,
           child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: Sizes.size32),
+              padding: const EdgeInsets.symmetric(
+                vertical: Sizes.size32,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Don't have an account?",
-                      style: TextStyle(fontSize: Sizes.size16)),
+                  const Text(
+                    "Don't have an account?",
+                    style: TextStyle(
+                      fontSize: Sizes.size16,
+                    ),
+                  ),
                   Gaps.h5,
                   GestureDetector(
-                      onTap: () => _onSignUpTap(context),
-                      child: Text("Sign up",
-                          style: TextStyle(
-                              fontSize: Sizes.size16,
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).primaryColor)))
+                    onTap: () => _onSignUpTap(context),
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(
+                        fontSize: Sizes.size16,
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  )
                 ],
               ))),
     );
