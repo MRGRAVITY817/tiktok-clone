@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
-import 'package:ticktok_clone/features/onboarding/tutorial_screen.dart';
+import 'package:ticktok_clone/features/onboarding/tutorial_screen_using_animated_cross_fade.dart';
 import 'package:ticktok_clone/features/onboarding/widgets/interest_button.dart';
 
 class InterestsScreen extends StatefulWidget {
