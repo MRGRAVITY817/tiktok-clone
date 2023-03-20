@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
+import 'package:ticktok_clone/features/main_navigation/main_navigation_screen.dart';
 
 enum Direction { right, left }
 
@@ -18,6 +19,15 @@ class _TutorialScreenState extends State<TutorialScreen> {
   // States
   Direction _direction = Direction.right;
   Page _showingPage = Page.first;
+
+  void _onEnterApp() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const MainNavigationScreen(),
+      ),
+      (route) => false,
+    );
+  }
 
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -87,7 +97,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               duration: const Duration(milliseconds: 100),
               opacity: _showingPage == Page.first ? 0 : 1,
               child: CupertinoButton(
-                onPressed: () {},
+                onPressed: _onEnterApp,
                 color: Theme.of(context).primaryColor,
                 child: const Text("Enter the app!"),
               ),
