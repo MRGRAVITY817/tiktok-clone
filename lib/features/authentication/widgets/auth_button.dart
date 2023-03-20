@@ -14,7 +14,7 @@ class AuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     // `FractionallySizedBox` will expand horizontally til parent's width.
     return GestureDetector(
-      onTap: () => onTap!(),
+      onTap: () => onTap?.call(),
       child: FractionallySizedBox(
         widthFactor: 1,
         child: Container(
