@@ -15,16 +15,16 @@ class _TutorialScreenState extends State<TutorialScreen> {
     return DefaultTabController(
       length: 3, // How many tab screens will we have
       child: Scaffold(
-        body: SafeArea(
+        body: const SafeArea(
           child: TabBarView(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: Sizes.size24,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Gaps.v52,
                     Text(
                       "Watch cool videos",
@@ -44,12 +44,12 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: Sizes.size24,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Gaps.v52,
                     Text(
                       "Tab 2",
@@ -69,12 +69,12 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: Sizes.size24,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Gaps.v52,
                     Text(
                       "Tab 3",
@@ -101,9 +101,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
             padding: const EdgeInsets.symmetric(
               vertical: Sizes.size48,
             ),
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 TabPageSelector(
                   color: Colors.white,
                   selectedColor: Colors.black38,

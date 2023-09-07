@@ -14,14 +14,14 @@ class LoginFormScreen extends StatefulWidget {
 class _LoginFormScreenState extends State<LoginFormScreen> {
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     Map<String, String> formData = {};
 
-    void _onSubmitTap() {
-      if (_formKey.currentState != null) {
-        if (_formKey.currentState!.validate()) {
-          _formKey.currentState!.save();
+    void onSubmitTap() {
+      if (formKey.currentState != null) {
+        if (formKey.currentState!.validate()) {
+          formKey.currentState!.save();
           // `Navigator.pushAndRemoveUntil` will push, but remove
           // the preceding pages, conditionally.
           Navigator.of(context).pushAndRemoveUntil(
@@ -43,7 +43,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
           horizontal: Sizes.size36,
         ),
         child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               children: [
                 Gaps.v28,
@@ -102,7 +102,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 ),
                 Gaps.v28,
                 GestureDetector(
-                  onTap: _onSubmitTap,
+                  onTap: onSubmitTap,
                   child: const FormButton(disabled: false),
                 ),
               ],

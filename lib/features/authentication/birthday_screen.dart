@@ -54,51 +54,52 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
         title: const Text("Sign up"),
       ),
       body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: Sizes.size36,
-          ),
-          child: Column(
-            // Cross axis of column is row direction.
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Gaps.v40,
-              const Text(
-                "When's your birthday?",
-                style: TextStyle(
-                  fontSize: Sizes.size24,
-                  fontWeight: FontWeight.w700,
+        padding: const EdgeInsets.symmetric(
+          horizontal: Sizes.size36,
+        ),
+        child: Column(
+          // Cross axis of column is row direction.
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gaps.v40,
+            const Text(
+              "When's your birthday?",
+              style: TextStyle(
+                fontSize: Sizes.size24,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            Gaps.v8,
+            const Text(
+              "Your birthday won't be shown publicly.",
+              style: TextStyle(
+                fontSize: Sizes.size16,
+                color: Colors.black54,
+              ),
+            ),
+            Gaps.v16,
+            TextField(
+              controller: _birthdayController,
+              decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade400),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
-              Gaps.v8,
-              const Text(
-                "Your birthday won't be shown publicly.",
-                style: TextStyle(
-                  fontSize: Sizes.size16,
-                  color: Colors.black54,
-                ),
+              cursorColor: Theme.of(context).primaryColor,
+            ),
+            Gaps.v28,
+            GestureDetector(
+              onTap: _onNextTap,
+              child: const FormButton(
+                disabled: false,
               ),
-              Gaps.v16,
-              TextField(
-                controller: _birthdayController,
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                  ),
-                ),
-                cursorColor: Theme.of(context).primaryColor,
-              ),
-              Gaps.v28,
-              GestureDetector(
-                onTap: _onNextTap,
-                child: const FormButton(
-                  disabled: false,
-                ),
-              ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
           child: SizedBox(
         height: 300,
