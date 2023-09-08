@@ -25,7 +25,7 @@ class _VideoPostState extends State<VideoPost> with SingleTickerProviderStateMix
   late final AnimationController animationController;
 
   // States
-  bool isPlaying = false;
+  bool isPlaying = true;
   Duration animationDuration = const Duration(milliseconds: 200);
 
   @override
@@ -45,6 +45,7 @@ class _VideoPostState extends State<VideoPost> with SingleTickerProviderStateMix
 
   void initVideoPlayer() async {
     await videoPlayerController.initialize();
+    await videoPlayerController.setLooping(true);
 
     setState(() {});
 
