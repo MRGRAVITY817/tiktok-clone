@@ -11,9 +11,23 @@ class VideoTimelineScreen extends StatefulWidget {
 class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   List<Color> colors = [Colors.blue, Colors.red, Colors.teal, Colors.amber];
   int itemCount = 4;
+  final PageController pageController = PageController();
 
-  void onPageChanged(int value) {
-    if (value == itemCount - 1) {
+  void onPageChanged(int page) {
+    swipeNext(page);
+    infinitelyScroll(page);
+  }
+
+  void swipeNext(int page) {
+    pageController.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 130),
+      curve: Curves.linear,
+    );
+  }
+
+  void infinitelyScroll(int page) {
+    if (page == itemCount - 1) {
       itemCount = itemCount + 4;
       colors.addAll([Colors.blue, Colors.red, Colors.teal, Colors.amber]);
       setState(() {});
@@ -38,6 +52,7 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
         ),
       ),
       onPageChanged: onPageChanged,
+      controller: pageController,
     );
   }
 }
