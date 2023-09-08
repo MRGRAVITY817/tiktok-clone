@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
+import 'package:ticktok_clone/features/videos/widgets/video_side_button.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -111,6 +113,58 @@ class _VideoPostState extends State<VideoPost> with SingleTickerProviderStateMix
                   ),
                 ),
               ),
+            ),
+          ),
+          const Positioned(
+            bottom: 30,
+            left: 20,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '@hoonwee',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    fontSize: Sizes.size20,
+                  ),
+                ),
+                Gaps.v16,
+                Text(
+                  'Baby Jay and his Grandpa...',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                    fontSize: Sizes.size20,
+                  ),
+                )
+              ],
+            ),
+          ),
+          const Positioned(
+            bottom: 30,
+            right: 10,
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  foregroundImage: NetworkImage(
+                    "https://avatars.githubusercontent.com/u/41038636",
+                  ),
+                  child: Text(
+                    "성훈",
+                  ),
+                ),
+                Gaps.v24,
+                VideoSideButton(icon: FontAwesomeIcons.solidHeart, text: "2.9M"),
+                Gaps.v24,
+                VideoSideButton(icon: FontAwesomeIcons.solidComment, text: "33k"),
+                Gaps.v24,
+                VideoSideButton(icon: FontAwesomeIcons.share, text: "Share"),
+              ],
             ),
           )
         ],
