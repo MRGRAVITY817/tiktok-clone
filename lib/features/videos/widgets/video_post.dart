@@ -22,6 +22,9 @@ class _VideoPostState extends State<VideoPost> {
   final VideoPlayerController videoPlayerController =
       VideoPlayerController.asset("assets/videos/baby_video.mp4");
 
+  bool isPlaying = false;
+  Duration animationDuration = const Duration(milliseconds: 130);
+
   @override
   void initState() {
     super.initState();
@@ -69,13 +72,17 @@ class _VideoPostState extends State<VideoPost> {
                 : Container(color: Colors.blue),
           ),
           Positioned.fill(child: GestureDetector(onTap: onTogglePause)),
-          const Positioned.fill(
+          Positioned.fill(
             child: IgnorePointer(
               child: Center(
-                child: FaIcon(
-                  FontAwesomeIcons.play,
-                  color: Colors.white,
-                  size: Sizes.size52,
+                child: AnimatedOpacity(
+                  opacity: isPlaying ? 0 : 1,
+                  duration: animationDuration,
+                  child: const FaIcon(
+                    FontAwesomeIcons.play,
+                    color: Colors.white,
+                    size: Sizes.size52,
+                  ),
                 ),
               ),
             ),
@@ -91,5 +98,8 @@ class _VideoPostState extends State<VideoPost> {
     } else {
       videoPlayerController.play();
     }
+    setState(() {
+      isPlaying = !isPlaying;
+    });
   }
 }
