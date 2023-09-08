@@ -4,6 +4,7 @@ import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
 import 'package:ticktok_clone/features/authentication/widgets/nav_tab.dart';
 import 'package:ticktok_clone/features/authentication/widgets/post_video_button.dart';
+import 'package:ticktok_clone/features/videos/video_timeline_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -14,14 +15,6 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int selectedIndex = 0;
-
-  final screens = [
-    const Center(child: Text("Home")),
-    const Center(child: Text("Search")),
-    const Center(child: Text("Search")),
-    const Center(child: Text("Search")),
-    const Center(child: Text("Search")),
-  ];
 
   void onTap(int index) {
     setState(() {
@@ -51,22 +44,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         children: [
           Offstage(
             offstage: selectedIndex != 0,
-            child: Container(),
+            child: const VideoTimelineScreen(),
           ),
           Offstage(
             offstage: selectedIndex != 1,
             child: Container(),
           ),
           Offstage(
-            offstage: selectedIndex != 2,
+            offstage: selectedIndex != 3,
             child: Container(),
           ),
           Offstage(
             offstage: selectedIndex != 4,
-            child: Container(),
-          ),
-          Offstage(
-            offstage: selectedIndex != 5,
             child: Container(),
           ),
         ],
