@@ -48,7 +48,7 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   Widget build(BuildContext context) {
     return PageView.builder(
       scrollDirection: Axis.vertical,
-      itemBuilder: (context, index) => VideoPost(onVideoFinished: onVideoFinished),
+      itemBuilder: (context, index) => VideoPost(onVideoFinished: onVideoFinished, index: index),
       onPageChanged: onPageChanged,
       controller: pageController,
     );
