@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ticktok_clone/constants/sizes.dart';
+import 'package:ticktok_clone/features/videos/widgets/video_post.dart';
 
 class VideoTimelineScreen extends StatefulWidget {
   const VideoTimelineScreen({super.key});
@@ -9,9 +9,10 @@ class VideoTimelineScreen extends StatefulWidget {
 }
 
 class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
-  List<Color> colors = [Colors.blue, Colors.red, Colors.teal, Colors.amber];
   int itemCount = 4;
   final PageController pageController = PageController();
+  final scrollDuration = const Duration(milliseconds: 200);
+  final scrollCurve = Curves.linear;
 
   void onPageChanged(int page) {
     swipeNext(page);
@@ -21,36 +22,33 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   void swipeNext(int page) {
     pageController.animateToPage(
       page,
-      duration: const Duration(milliseconds: 130),
-      curve: Curves.linear,
+      duration: scrollDuration,
+      curve: scrollCurve,
     );
   }
 
   void infinitelyScroll(int page) {
     if (page == itemCount - 1) {
       itemCount = itemCount + 4;
-      colors.addAll([Colors.blue, Colors.red, Colors.teal, Colors.amber]);
       setState(() {});
     }
+  }
+
+  void onVideoFinished() {
+    pageController.nextPage(duration: scrollDuration, curve: scrollCurve);
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
       scrollDirection: Axis.vertical,
-      itemBuilder: (context, index) => Container(
-        color: colors[index],
-        child: Center(
-          child: Text(
-            "Page $index",
-            style: const TextStyle(
-              fontSize: Sizes.size72,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+      itemBuilder: (context, index) => VideoPost(onVideoFinished: onVideoFinished),
       onPageChanged: onPageChanged,
       controller: pageController,
     );

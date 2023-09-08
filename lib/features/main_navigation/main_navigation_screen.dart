@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ticktok_clone/constants/gaps.dart';
 import 'package:ticktok_clone/constants/sizes.dart';
 import 'package:ticktok_clone/features/authentication/widgets/nav_tab.dart';
-import 'package:ticktok_clone/features/authentication/widgets/post_video_button.dart';
+import 'package:ticktok_clone/features/main_navigation/widgets/post_video_button.dart';
 import 'package:ticktok_clone/features/videos/video_timeline_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -83,7 +83,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 onTap: () => onTap(1),
               ),
               Gaps.h16,
-              GestureDetector(onTap: onPostVideoButtonTap, child: const PostVideoButton()),
+              GestureDetector(
+                onTap: onPostVideoButtonTap,
+                child: const PostVideoButton(),
+              ),
               Gaps.h16,
               NabTab(
                 text: "Inbox",
